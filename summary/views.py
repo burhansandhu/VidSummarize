@@ -27,11 +27,14 @@ def generate_summary(video_link, lang='en-US'):
         if not os.path.exists(video_path) or os.path.getsize(video_path) == 0:
             return "The video file is invalid or empty."
 
+        # Load the video and extract audio
         with VideoFileClip(video_path) as video:
-            video.audio.write_audiofile(audio_path)
-
+            video.audio.write_a
+            
+        # Initialize recognizer class for recognizing the speech
         recognizer = sr.Recognizer()
-
+        
+        # Load the audio file and convert it to text
         with sr.AudioFile(audio_path) as source:
             audio_data = recognizer.record(source)
             try:
