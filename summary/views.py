@@ -33,7 +33,7 @@ def generate_summary(video_link, lang='en-US'):
             
         # Initialize recognizer class for recognizing the speech
         recognizer = sr.Recognizer()
-        
+
         # Load the audio file and convert it to text
         with sr.AudioFile(audio_path) as source:
             audio_data = recognizer.record(source)
@@ -62,7 +62,7 @@ def summarize_video(request):
     summary = ""
     if request.method == "POST":
         video_link = request.POST.get("video_link")
-        language = request.POST.get("language")  # Get selected language
-        summary = generate_summary(video_link, lang=language)  # Pass the language to the function
+        language = request.POST.get("language")
+        summary = generate_summary(video_link, lang=language)
 
     return render(request, "summarizer.html", {"summary": summary})
